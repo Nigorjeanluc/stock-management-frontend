@@ -20,9 +20,10 @@ const initialState = {
 const itemReducer = (state = initialState, action) => {
   switch(action.type) {
     case ADD_ITEM:
+      const data = action.payload;
       return {
         ...state,
-        items: state.items.push(action.payload)
+        items: [...state.items, data]
       }
     
     case DELETE_ITEM:
