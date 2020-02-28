@@ -1,5 +1,6 @@
 import { ADD_ITEM } from './itemTypes'
 import { DELETE_ITEM } from './itemTypes'
+import { SELECT_ITEM } from './itemTypes'
 
 const initialState = {
   items: [{
@@ -14,7 +15,8 @@ const initialState = {
   }, {
     name: 'Shirt',
     price: '5000 Rwf'
-  }]
+  }],
+  notDeleted: true
 }
 
 const itemReducer = (state = initialState, action) => {
@@ -33,6 +35,14 @@ const itemReducer = (state = initialState, action) => {
           return index !== action.payload
         })
       }
+    
+      case SELECT_ITEM:
+        return {
+          ...state,
+          items: state.items.filter((item, index) => {
+            return index === action.payload
+          })
+        }  
     
     default: return state
   }
