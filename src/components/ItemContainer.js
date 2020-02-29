@@ -15,7 +15,7 @@ function ItemContainer() {
   const dispatch = useDispatch()
 
   const itemList = allItems.map(
-  (item, index) => <tr key={index}><td>{index}</td><td><Link to={`${match.url}/${index}`}>{item.name}</Link></td><td>{item.price}</td><td><button onClick={() => dispatch(deleteItem(index))} className="btn danger">Delete</button></td></tr>
+  (item, index) => <tr key={index}><td>{index + 1 }</td><td><Link to={`${match.url}/${index}`}>{item.name}</Link></td><td>{item.price}</td><td><button onClick={() => dispatch(deleteItem(index))} className="btn danger">Delete</button></td></tr>
   )
 
   const jsx = isLoggedIn ? (
@@ -34,16 +34,16 @@ function ItemContainer() {
       <h1>All Items</h1>
       <div>
         <table>
-          <tr>
-            <th>Index</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Controls</th>
-          </tr>
-          {itemList}
-          <tr>
-
-          </tr>
+          <tbody>
+            <tr>
+              <th>Index</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Controls</th>
+            </tr>
+            {itemList}
+          </tbody>
+          
         </table>
       </div>
     </div>
